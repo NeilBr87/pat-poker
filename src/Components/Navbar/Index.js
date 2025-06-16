@@ -10,7 +10,7 @@ export default function Navbar(props) {
         <div id="navbarMenu">
             <p onClick={() => navigate("home")} className="navbarItem">Home</p>
             <p onClick={() => navigate("testimonials")} className="navbarItem">Testimonials</p>
-            <p className="navbarItem">Get started</p>
+            <p onClick={() => navigate("getstarted")}className="navbarItem">Get started</p>
         </div>
     )
 }
