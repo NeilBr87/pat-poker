@@ -5,6 +5,7 @@ export default function ExpandedMenu(props) {
    
     function navigate(activePage) {
         props.setPicker(activePage)
+        props.setExpanded(false)
     }
 
     function setExpandedFalse() {

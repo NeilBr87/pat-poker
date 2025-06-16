@@ -13,7 +13,7 @@ export default function Menu() {
 
     const [picker, setPicker] = useState("home");
     const theme = useTheme();
-    const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+    const isMobile = useMediaQuery(theme.breakpoints.down('md'));
     const [expanded, setExpanded] = useState(false)
     
     return (
