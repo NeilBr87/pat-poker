@@ -42,7 +42,13 @@ export default function Menu() {
             {picker === "home" && (
             <MobHome  picker={picker} setPicker={setPicker}/>
             )}
-            {expanded && <ExpandedMenu expanded={expanded} setExpanded={setExpanded} />}
+            {picker === "testimonials" && (
+            <Testimonials />
+            )}
+            {picker === "getstarted" && (
+            <GetStarted />
+            )}
+            {expanded && <ExpandedMenu expanded={expanded} setExpanded={setExpanded} picker={picker} setPicker={setPicker}  />}
             </div>
         )}
 
