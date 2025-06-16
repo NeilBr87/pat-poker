@@ -1,0 +1,12 @@
+#burgerIcon {
+    font-size: 45px;
+}
+
+#burgerContainer {
+            display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding-left: 3vw;
+    padding-top: 3vw;
+    margin-bottom: 2vh;
+}

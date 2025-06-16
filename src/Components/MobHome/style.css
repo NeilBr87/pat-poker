@@ -1,0 +1,45 @@
+.mobGraph {
+    width: 90vw;
+    background-color: white;
+}
+
+.mobGraphContainer {
+    background-color: #0A1431;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+}
+
+#infoContainerMob {
+        display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4vh;
+    margin-top: 3vh;
+    margin-bottom: 4vh;
+}
+
+.infoColMob {
+    width: 80vw;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    background-color: white;
+    color: black;
+    padding: 10px;
+    border-radius: 2px;
+}
+
+#getStartedMob {
+    background-color: #D1421B;
+    height: 5vh;
+    border-radius: 10px;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 60vw;
+    margin-top: 2vh;
+}
