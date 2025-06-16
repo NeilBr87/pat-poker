@@ -12,9 +12,10 @@ import './style.css'
 export default function Menu() {
 
     const [picker, setPicker] = useState("home");
-      const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+    const [expanded, setExpanded] = useState(false)
+    
     return (
         <div>
 
@@ -37,11 +38,11 @@ export default function Menu() {
 
         {isMobile && (
             <div>
-            <BurgerMenu picker={picker} setPicker={setPicker}/>
+            <BurgerMenu picker={picker} setPicker={setPicker} expanded={expanded} setExpanded={setExpanded}/>
             {picker === "home" && (
             <MobHome  picker={picker} setPicker={setPicker}/>
             )}
-            <ExpandedMenu />
+            {expanded && <ExpandedMenu expanded={expanded} setExpanded={setExpanded} />}
             </div>
         )}
 

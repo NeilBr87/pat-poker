@@ -3,7 +3,7 @@
 }
 
 #burgerContainer {
-            display: flex;
+    display: flex;
     flex-direction: row;
     justify-content: flex-start;
     padding-left: 3vw;
