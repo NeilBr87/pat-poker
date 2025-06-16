@@ -1,0 +1,35 @@
+
+
+#graphContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 50vh;
+    margin: 0 auto;
+    background-color: #0A1431;
+}
+
+.graphColumn {
+    flex: 1;
+    width: 40vw;
+    text-align: left;
+    color: white;
+}
+
+.graph {
+    background-color: white;
+    width: 100%;
+}
+
+#getStarted {
+    background-color: #D1421B;
+    width: 15vw;
+    margin-left: 16vw;
+    height: 5vh;
+    border-radius: 10px;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+}

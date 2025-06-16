@@ -1,0 +1,19 @@
+#navbarMenu {
+    color: white;;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 14vh;
+    gap: 20vw;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* #0E1E4A */
+
+.navbarItem:hover {
+    color: #D1F5FF;
+    cursor: pointer;
+    transform: scale(1.1);
+}
