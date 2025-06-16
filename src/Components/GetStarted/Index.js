@@ -1,5 +1,5 @@
 import './style.css'
-import Signup from '../Signup/Index.js'
+// import Signup from '../Signup/Index.js'
 export default function GetStarted() {
 
 

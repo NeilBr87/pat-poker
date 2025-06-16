@@ -1,21 +1,24 @@
 import Graph from './SharkScopeChart.png'
 import './style.css'
 
-export default function Home() {
+export default function Home(props) {
 
+        function navigate(activePage) {
+        props.setPicker(activePage)
+    }
     return (
         <div id="outerMenu">
             <div id="graphContainer">
                 <div className="graphColumn">
                     <h2 style={{paddingLeft: '16vw'}}>Don't just master the game.</h2>
                     <h1 style={{paddingLeft: '16vw'}}>Master the opposition.</h1>
-                    <button id="getStarted">Get started</button>
+                    <button onClick={() => navigate("getstarted")} id="getStarted">Get started</button>
                 </div>
                 <div className="graphColumn">
                     <img className="graph" src={Graph} alt="Graph" />
                 </div>
             </div>
-             <h3 style={{marginTop: '4vh'}}>Patrick Brooks - Expert online poker coaching</h3>
+             <h2 style={{marginTop: '3vh'}}>Patrick Brooks - Expert online poker coaching</h2>
              <h3>Learn the techniques and mindsets required to maximise your game and genrate high performance results </h3>
             <div id="infoRow">
                 <div className="infoCol">
@@ -24,7 +27,7 @@ export default function Home() {
                 </div>
                 <div className="infoCol">
                     <b>A solid choice</b>
-                    <p>Over 200 former clients at a range of skill levels</p>
+                    <p>Over 200 former clients at a range of skill levels and strengths</p>
                 </div>
                 <div className="infoCol">
                     <b>All skill levels</b>
