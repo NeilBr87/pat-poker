@@ -15,29 +15,30 @@ export default function Menu() {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('md'));
     const [expanded, setExpanded] = useState(false)
-    
+
     return (
         <div>
 
         {!isMobile && (
         <div>
             <Navbar picker={picker} setPicker={setPicker} />
+            <main className="content-shell">
+                {picker === "home" && (
+                <Home  picker={picker} setPicker={setPicker}/>
+                )}
 
-            {picker === "home" && (
-            <Home  picker={picker} setPicker={setPicker}/>
-            )}
+                {picker === "testimonials" && (
+                <Testimonials />
+                )}
 
-            {picker === "testimonials" && (
-            <Testimonials />
-            )}
-
-            {picker === "getstarted" && (
-            <GetStarted />
-            )}
+                {picker === "getstarted" && (
+                <GetStarted />
+                )}
+            </main>
         </div>)}
 
         {isMobile && (
-            <div>
+            <div className="content-shell">
             <BurgerMenu picker={picker} setPicker={setPicker} expanded={expanded} setExpanded={setExpanded}/>
             {picker === "home" && (
             <MobHome  picker={picker} setPicker={setPicker}/>

@@ -1,31 +1,79 @@
-#prices {
-    background-color: #0A1431;
-    padding: 30px 60px;
-    width: 20vw;
-box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
-height: 12vh;}
-
-#faqRow {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: baseline;
-    gap: 4vw;
-}
-
-.faqContainerMob {
+.get-started-shell {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    gap: 16px;
 }
 
-.pricesMob {
-    background-color: #0A1431;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
-    width: 50vw;
-        padding: 30px 60px;
+.get-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 0.9fr;
+    gap: 16px;
+}
 
-    margin: 0 auto;
-    margin-bottom: 5vh;
+.get-grid.mobile {
+    grid-template-columns: 1fr;
+}
+
+.get-intro {
+    padding: 22px;
+    border: 1px solid var(--border);
+    display: grid;
+    gap: 12px;
+}
+
+.get-intro h1,
+.get-intro h2 {
+    margin: 0;
+}
+
+.get-intro p {
+    margin: 0;
+}
+
+.get-details {
+    display: grid;
+    gap: 12px;
+}
+
+.detail-card {
+    padding: 18px;
+    border: 1px solid var(--border);
+    display: grid;
+    gap: 8px;
+}
+
+.callouts {
+    display: grid;
+    gap: 10px;
+}
+
+.callout {
+    display: grid;
+    grid-template-columns: 42px 1fr;
+    gap: 10px;
+    align-items: start;
+    padding: 12px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border);
+}
+
+.callout p {
+    margin: 4px 0 0;
+    color: var(--text-muted);
+}
+
+.icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+@media (max-width: 900px) {
+    .get-grid {
+        grid-template-columns: 1fr;
+    }
 }
