@@ -1,0 +1,168 @@
+.process-track {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* Connecting rail that fills with gold as the section comes into view. */
+.process-track::before,
+.process-track::after {
+    content: '';
+    position: absolute;
+    top: 22px;
+    left: 22px;
+    right: calc((100% - 54px) / 4 - 23px);
+    height: 2px;
+    border-radius: 2px;
+    background: var(--line-strong);
+}
+
+.process-track::after {
+    background: linear-gradient(90deg, var(--gold-deep), var(--gold-bright));
+    transform-origin: left;
+    transform: scaleX(0);
+    transition: transform 1.8s var(--ease-out) 0.2s;
+}
+
+.process-track.is-live::after {
+    transform: scaleX(1);
+}
+
+.process-step {
+    position: relative;
+    display: grid;
+    gap: 22px;
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+    transition-delay: calc(var(--s) * 180ms + 200ms);
+}
+
+.is-live .process-step {
+    opacity: 1;
+    transform: none;
+}
+
+.process-node {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    font-weight: 800;
+    color: var(--gold);
+    background: var(--bg);
+    border: 2px solid var(--line-strong);
+    transition: border-color 0.4s ease, color 0.4s ease, background-color 0.4s ease, box-shadow 0.4s ease;
+    transition-delay: calc(var(--s) * 400ms + 300ms);
+}
+
+.is-live .process-node {
+    border-color: var(--gold);
+    color: #1a1306;
+    background: var(--gold);
+    box-shadow: 0 0 0 6px rgba(227, 194, 122, 0.12), 0 0 30px rgba(227, 194, 122, 0.4);
+}
+
+.process-body {
+    height: 100%;
+    padding: 24px;
+}
+
+.process-street {
+    margin: 0 0 14px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+}
+
+.process-body h3 {
+    margin: 18px 0 8px;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 1.2;
+}
+
+.process-body > p:last-child {
+    margin: 0;
+    font-size: 15px;
+    color: var(--text-muted);
+}
+
+.mini-board {
+    display: flex;
+    gap: 5px;
+}
+
+.mini-card {
+    display: grid;
+    place-items: center;
+    align-content: center;
+    width: 30px;
+    height: 42px;
+    border-radius: 5px;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1;
+    color: #15171b;
+    background: linear-gradient(160deg, #fbf7ee, #e6dcc8);
+    box-shadow: 0 6px 14px -6px rgba(0, 0, 0, 0.8);
+}
+
+.mini-card i {
+    font-style: normal;
+    font-size: 12px;
+}
+
+.mini-card.is-red {
+    color: #c23b31;
+}
+
+.mini-card.is-empty {
+    background: transparent;
+    border: 1px dashed var(--line-strong);
+    box-shadow: none;
+}
+
+@media (max-width: 960px) {
+    .process-track {
+        grid-template-columns: 1fr;
+        gap: 22px;
+        padding-left: 64px;
+    }
+
+    .process-track::before,
+    .process-track::after {
+        top: 22px;
+        bottom: 22px;
+        left: 22px;
+        right: auto;
+        width: 2px;
+        height: auto;
+    }
+
+    .process-track::after {
+        transform-origin: top;
+        transform: scaleY(0);
+    }
+
+    .process-track.is-live::after {
+        transform: scaleY(1);
+    }
+
+    .process-node {
+        position: absolute;
+        left: -64px;
+        top: 0;
+    }
+}

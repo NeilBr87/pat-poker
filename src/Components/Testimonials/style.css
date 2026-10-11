@@ -1,41 +1,180 @@
-.testimonial-shell {
+.quote-stage {
+    padding: clamp(28px, 5vw, 64px);
+    overflow: hidden;
+    background:
+        radial-gradient(70% 90% at 0% 0%, rgba(227, 194, 122, 0.09), transparent 60%),
+        radial-gradient(60% 80% at 100% 100%, rgba(31, 107, 80, 0.3), transparent 70%),
+        var(--glass);
+}
+
+.quote-mark {
+    position: absolute;
+    top: -0.18em;
+    right: 0.08em;
+    font-family: var(--font-display);
+    font-size: clamp(220px, 30vw, 380px);
+    line-height: 1;
+    color: rgba(227, 194, 122, 0.08);
+    pointer-events: none;
+}
+
+.quote-featured {
+    position: relative;
+    margin: 0;
+    min-height: 280px;
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    animation: quote-in 0.8s var(--ease-out);
 }
 
-.testimonial-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 14px;
+@keyframes quote-in {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+        filter: blur(6px);
+    }
 }
 
-.testimonial {
-    padding: 18px;
-    border: 1px solid var(--border);
-    text-align: left;
-    border-radius: 14px;
+.quote-stars {
+    color: var(--gold);
+    letter-spacing: 0.2em;
+    font-size: 18px;
 }
 
-.testimonial-head {
+.quote-featured blockquote {
+    margin: 22px 0 36px;
+    max-width: 28ch;
+    font-family: var(--font-display);
+    font-size: clamp(28px, 4vw, 48px);
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+}
+
+.quote-featured figcaption {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 12px;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: auto;
 }
 
-.rating {
-    color: var(--accent-strong);
-    letter-spacing: 0.06em;
+.quote-featured figcaption > span:nth-child(2) {
+    display: grid;
+    line-height: 1.35;
+}
+
+.quote-featured figcaption strong {
+    font-size: 16px;
+}
+
+.quote-featured figcaption > span:nth-child(2) span {
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+.quote-avatar {
+    display: grid;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    font-weight: 800;
+    color: #1a1306;
+    background: linear-gradient(135deg, var(--gold-bright), var(--gold-deep));
+}
+
+.quote-result {
+    margin-left: auto;
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #86efac;
+    background: rgba(74, 222, 128, 0.08);
+    border: 1px solid rgba(74, 222, 128, 0.22);
+}
+
+.quote-tabs {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: clamp(32px, 5vw, 48px);
+}
+
+.quote-tab {
+    position: relative;
+    display: grid;
+    gap: 2px;
+    padding: 16px 18px;
+    text-align: left;
+    border-radius: 14px;
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.02);
+    cursor: pointer;
+    overflow: hidden;
+    transition: border-color 0.25s ease, background-color 0.25s ease;
+}
+
+.quote-tab:hover {
+    border-color: var(--line-strong);
+}
+
+.quote-tab.is-active {
+    border-color: rgba(227, 194, 122, 0.35);
+    background: rgba(227, 194, 122, 0.06);
+}
+
+.quote-tab-name {
     font-weight: 700;
 }
 
-.quote {
-    margin: 12px 0 10px;
-    line-height: 1.6;
+.quote-tab-role {
+    font-size: 13px;
+    color: var(--text-muted);
 }
 
-.foot {
-    margin: 0;
-    color: var(--text-muted);
+.quote-tab-progress {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 100%;
+    background: var(--gold);
+    transform-origin: left;
+    transform: scaleX(0);
+}
+
+.is-visible .quote-tab.is-active .quote-tab-progress {
+    animation: tab-progress var(--duration) linear forwards;
+}
+
+.quote-tab-progress.is-paused {
+    animation-play-state: paused !important;
+}
+
+@keyframes tab-progress {
+    to {
+        transform: scaleX(1);
+    }
+}
+
+@media (max-width: 720px) {
+    .quote-featured {
+        min-height: 340px;
+    }
+
+    .quote-result {
+        margin-left: 0;
+    }
+
+    .quote-tabs {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .is-visible .quote-tab.is-active .quote-tab-progress {
+        animation: none;
+        transform: scaleX(1);
+    }
 }
