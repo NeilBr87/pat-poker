@@ -1,0 +1,186 @@
+.card-fan {
+    --rx: 0deg;
+    --ry: 0deg;
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 0.9;
+    display: grid;
+    place-items: center;
+    perspective: 1400px;
+}
+
+.card-fan-glow {
+    position: absolute;
+    inset: 8% 4%;
+    border-radius: 50%;
+    background: radial-gradient(closest-side, rgba(31, 107, 80, 0.55), rgba(14, 58, 44, 0.25) 55%, transparent 75%);
+    filter: blur(20px);
+}
+
+.card-fan-stage {
+    position: relative;
+    width: clamp(130px, 17vw, 190px);
+    aspect-ratio: 5 / 7;
+    transform-style: preserve-3d;
+    transform: rotateX(var(--rx)) rotateY(var(--ry));
+    transition: transform 0.6s var(--ease-out);
+    animation: fan-float 7s ease-in-out infinite;
+}
+
+@keyframes fan-float {
+    0%, 100% { translate: 0 0; }
+    50% { translate: 0 -12px; }
+}
+
+.playing-card {
+    position: absolute;
+    inset: 0;
+    transform-origin: 50% 130%;
+    transform: rotate(0deg);
+    animation: card-deal 1.2s var(--ease-out) forwards;
+    animation-delay: calc((var(--i) + 2) * 90ms + 300ms);
+}
+
+@keyframes card-deal {
+    from {
+        transform: rotate(0deg) translateY(30px);
+        opacity: 0;
+    }
+    40% {
+        opacity: 1;
+    }
+    to {
+        transform: rotate(calc(var(--i) * 11deg)) translateY(calc(var(--i) * var(--i) * 3px));
+        opacity: 1;
+    }
+}
+
+.playing-card-face {
+    position: absolute;
+    inset: 0;
+    border-radius: 14px;
+    background:
+        radial-gradient(120% 80% at 20% 0%, #ffffff, transparent 60%),
+        linear-gradient(160deg, #fbf7ee, #ece4d3);
+    color: #15171b;
+    box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.8) inset,
+        0 0 0 1px rgba(0, 0, 0, 0.06),
+        0 24px 50px -16px rgba(0, 0, 0, 0.75);
+    transition: transform 0.45s var(--ease-out), box-shadow 0.45s var(--ease-out);
+}
+
+.playing-card:last-child .playing-card-face {
+    box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.8) inset,
+        0 0 0 1px rgba(180, 138, 60, 0.6),
+        0 0 40px -6px rgba(227, 194, 122, 0.55),
+        0 24px 50px -16px rgba(0, 0, 0, 0.75);
+}
+
+.card-fan:hover .playing-card-face {
+    transform: translateY(-4px);
+}
+
+.card-fan .playing-card:hover .playing-card-face {
+    transform: translateY(-22px);
+}
+
+.pc-corner {
+    position: absolute;
+    top: 10px;
+    left: 11px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(16px, 1.8vw, 22px);
+    line-height: 1;
+}
+
+.pc-corner i {
+    font-style: normal;
+    font-size: 0.8em;
+    margin-top: 2px;
+}
+
+.pc-corner-bottom {
+    top: auto;
+    left: auto;
+    bottom: 10px;
+    right: 11px;
+    transform: rotate(180deg);
+}
+
+.pc-center {
+    position: absolute;
+    inset: 22% 18%;
+    display: grid;
+    place-items: center;
+    font-size: clamp(48px, 6vw, 72px);
+    line-height: 1;
+}
+
+.pc-center.is-face {
+    border-radius: 8px;
+    border: 1px solid rgba(180, 138, 60, 0.55);
+    background: linear-gradient(160deg, rgba(227, 194, 122, 0.25), rgba(180, 138, 60, 0.08));
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+    color: #7a5a1f;
+    font-size: clamp(40px, 5vw, 60px);
+}
+
+/* Casino chips scattered around the fan. */
+.chip {
+    position: absolute;
+    width: clamp(46px, 5vw, 64px);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background:
+        radial-gradient(circle, var(--chip) 0 36%, transparent 37%),
+        repeating-conic-gradient(var(--chip) 0 22.5deg, #f3eee4 22.5deg 30deg, var(--chip) 30deg 45deg);
+    box-shadow:
+        inset 0 0 0 4px var(--chip),
+        inset 0 0 0 6px rgba(255, 255, 255, 0.25),
+        0 16px 30px -10px rgba(0, 0, 0, 0.8);
+    animation: chip-bob 6s ease-in-out infinite;
+}
+
+.chip::after {
+    content: '';
+    position: absolute;
+    inset: 30%;
+    border-radius: 50%;
+    border: 1.5px dashed rgba(255, 255, 255, 0.4);
+}
+
+.chip-a {
+    --chip: #b8322a;
+    left: 8%;
+    top: 14%;
+    rotate: -18deg;
+}
+
+.chip-b {
+    --chip: #14523d;
+    right: 6%;
+    top: 12%;
+    scale: 0.8;
+    animation-delay: -2s;
+}
+
+.chip-c {
+    --chip: #1b1d22;
+    right: 12%;
+    bottom: 8%;
+    scale: 0.65;
+    animation-delay: -4s;
+}
+
+@keyframes chip-bob {
+    0%, 100% { translate: 0 0; }
+    50% { translate: 0 -14px; }
+}

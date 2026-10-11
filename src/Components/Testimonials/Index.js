@@ -1,50 +1,75 @@
-import './style.css'
+import { useState } from 'react';
+import { testimonials } from '../../content.js';
+import Reveal from '../Reveal/Index.js';
+import './style.css';
+
+const ROTATE_MS = 7000;
+
+const initials = (name) => name.split(' ').map((part) => part[0]).join('');
 
 export default function Testimonials() {
+    const [active, setActive] = useState(0);
+    const [paused, setPaused] = useState(false);
 
+    // The active tab's progress bar drives rotation, so pausing the
+    // animation (hover/focus) also pauses the carousel.
+    const next = () => setActive((index) => (index + 1) % testimonials.length);
+
+    const featured = testimonials[active];
 
     return (
-        <div className="testimonial-shell">
-            <div className="section-header">
-                <p className="section-title">Testimonials</p>
-                <h1 className="section-heading">Players doubling down on their edge</h1>
-                <p className="subtle-text">Real stories from students who refined their mindset, cleaned up leaks, and started winning tougher pools.</p>
+        <section id="testimonials" className="section testimonials">
+            <div className="shell">
+                <Reveal className="section-header">
+                    <p className="eyebrow">Player stories</p>
+                    <h2 className="display">
+                        Players doubling down <em>on their edge.</em>
+                    </h2>
+                </Reveal>
+
+                <Reveal
+                    className="quote-stage card"
+                    onMouseEnter={() => setPaused(true)}
+                    onMouseLeave={() => setPaused(false)}
+                    onFocus={() => setPaused(true)}
+                    onBlur={() => setPaused(false)}
+                >
+                    <span className="quote-mark" aria-hidden="true">“</span>
+
+                    <figure className="quote-featured" key={active}>
+                        <div className="quote-stars" aria-label="Rated 5 out of 5">★★★★★</div>
+                        <blockquote>{featured.quote}</blockquote>
+                        <figcaption>
+                            <span className="quote-avatar" aria-hidden="true">{initials(featured.name)}</span>
+                            <span>
+                                <strong>{featured.name}</strong>
+                                <span>{featured.role}</span>
+                            </span>
+                            <span className="quote-result">{featured.result}</span>
+                        </figcaption>
+                    </figure>
+
+                    <div className="quote-tabs" aria-label="Choose a testimonial">
+                        {testimonials.map((item, index) => (
+                            <button
+                                key={item.name}
+                                type="button"
+                                aria-pressed={index === active}
+                                className={`quote-tab ${index === active ? 'is-active' : ''}`}
+                                onClick={() => setActive(index)}
+                                style={{ '--duration': `${ROTATE_MS}ms` }}
+                            >
+                                <span className="quote-tab-name">{item.name}</span>
+                                <span className="quote-tab-role">{item.role}</span>
+                                <span
+                                    className={`quote-tab-progress ${paused ? 'is-paused' : ''}`}
+                                    onAnimationEnd={index === active ? next : undefined}
+                                />
+                            </button>
+                        ))}
+                    </div>
+                </Reveal>
             </div>
-            <div className="testimonial-grid">
-                <div className="testimonial card-surface">
-                    <div className="testimonial-head">
-                        <div>
-                            <h3>Liv R.</h3>
-                            <p className="subtle-text">Cash game regular</p>
-                        </div>
-                        <div className="rating">★★★★★</div>
-                    </div>
-                    <p className="quote">"Patrick gave me a whole new way of looking at the game. My profit ratio has been insane."</p>
-                    <p className="foot">Bankroll up 32% over 90 days.</p>
-                </div>
-                <div className="testimonial card-surface">
-                    <div className="testimonial-head">
-                        <div>
-                            <h3>Chris M.</h3>
-                            <p className="subtle-text">Tournament grinder</p>
-                        </div>
-                        <div className="rating">★★★★★</div>
-                    </div>
-                    <p className="quote">"Best coaching out there. Sessions are structured, actionable, and remove the mental noise."</p>
-                    <p className="foot">Final-tabled 3 majors this quarter.</p>
-                </div>
-                <div className="testimonial card-surface">
-                    <div className="testimonial-head">
-                        <div>
-                            <h3>Sasha K.</h3>
-                            <p className="subtle-text">Mixed stakes</p>
-                        </div>
-                        <div className="rating">★★★★★</div>
-                    </div>
-                    <p className="quote">"Can't be beaten. Patrick spots leaks instantly and keeps me accountable every week."</p>
-                    <p className="foot">Confidence + consistency restored.</p>
-                </div>
-            </div>
-        </div>
-    )
+        </section>
+    );
 }

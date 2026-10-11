@@ -1,0 +1,98 @@
+.contact-form {
+    display: grid;
+    gap: 14px;
+}
+
+.field {
+    position: relative;
+}
+
+.field input,
+.field textarea {
+    width: 100%;
+    padding: 26px 16px 10px;
+    border-radius: 14px;
+    border: 1px solid var(--line-strong);
+    background: rgba(5, 7, 8, 0.55);
+    outline: none;
+    resize: vertical;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+}
+
+.field textarea {
+    min-height: 130px;
+}
+
+.field input:focus,
+.field textarea:focus {
+    border-color: var(--gold);
+    background: rgba(5, 7, 8, 0.8);
+    box-shadow: 0 0 0 4px rgba(227, 194, 122, 0.12);
+}
+
+/* Floating label: sits inside the field until it has focus or content. */
+.field label {
+    position: absolute;
+    left: 17px;
+    top: 18px;
+    font-size: 15px;
+    color: var(--text-muted);
+    pointer-events: none;
+    transform-origin: left top;
+    transition: transform 0.25s var(--ease-out), color 0.25s ease;
+}
+
+.field input:focus + label,
+.field input:not(:placeholder-shown) + label,
+.field textarea:focus + label,
+.field textarea:not(:placeholder-shown) + label {
+    transform: translateY(-10px) scale(0.78);
+    color: var(--gold);
+}
+
+.field-error {
+    margin-top: 6px;
+    font-size: 13px;
+    color: var(--red);
+}
+
+.contact-form .btn {
+    width: 100%;
+    margin-top: 4px;
+}
+
+.contact-success {
+    display: grid;
+    justify-items: start;
+    gap: 6px;
+    padding: 12px 0;
+    animation: fade-up 0.6s var(--ease-out) both;
+}
+
+.contact-success-icon {
+    display: grid;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    margin-bottom: 8px;
+    border-radius: 50%;
+    color: #1a1306;
+    background: linear-gradient(135deg, var(--gold-bright), var(--gold-deep));
+}
+
+.contact-success-icon svg {
+    width: 26px;
+    height: 26px;
+}
+
+.contact-success h3 {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 30px;
+}
+
+.contact-success p {
+    margin: 0;
+    color: var(--text-muted);
+}

@@ -1,3 +1,16 @@
+# Pat Poker
+
+Single-page marketing site for Pat Poker's one-on-one online poker coaching, built with Create React App.
+
+## Project structure
+
+- `src/content.js` — all site copy (nav, stats, testimonials, pricing, FAQ, profit curve data). Edit text here.
+- `src/hooks.js` — shared hooks (in-view reveal, count-up, scroll-spy, media query).
+- `src/Components/<Name>/Index.js` + `style.css` — one folder per section: Navbar, Hero (with CardFan), Marquee, Results (with ProfitChart), Method, Process, Testimonials, Pricing (with ContactForm), Faq, Footer.
+- `src/index.css` — design tokens (colours, fonts, spacing) and shared utilities such as `.btn`, `.card` and `.reveal`.
+
+The contact form posts to Formspree (form id in `src/Components/ContactForm/Index.js`).
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
